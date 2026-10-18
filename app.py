@@ -31,6 +31,8 @@ st.set_page_config(page_title="Spoon & Knife Detector", page_icon="🥄", layout
 # Model loading (downloaded once, cached)
 # ----------------------------------------------------------------------
 @st.cache_resource(show_spinner="Loading detection model (first run downloads ~25 MB)...")
+st.write("OpenCV version:", cv2.__version__)
+st.write("Has dnn:", hasattr(cv2, "dnn") and hasattr(cv2.dnn, "readNetFromDarknet"))
 def load_model():
     os.makedirs(MODEL_DIR, exist_ok=True)
     for fname, url in MODEL_FILES.items():
