@@ -27,6 +27,10 @@ COLORS = {"spoon": (0, 200, 0), "knife": (0, 0, 255)}  # BGR
 st.set_page_config(page_title="Spoon & Knife Detector", page_icon="🥄", layout="wide")
 st.write("OpenCV version:", cv2.__version__)
 st.write("Has dnn:", hasattr(cv2, "dnn") and hasattr(cv2.dnn, "readNetFromDarknet"))
+st.write("cv2 file:", cv2.__file__)
+st.write("cv2 version:", cv2.__version__)
+st.write("has dnn:", hasattr(cv2, "dnn"))
+st.write("has readNetFromDarknet:", hasattr(getattr(cv2, "dnn", None), "readNetFromDarknet"))
 
 # ----------------------------------------------------------------------
 # Model loading (downloaded once, cached)
