@@ -25,14 +25,14 @@ TARGETS = ["spoon", "knife"]
 COLORS = {"spoon": (0, 200, 0), "knife": (0, 0, 255)}  # BGR
 
 st.set_page_config(page_title="Spoon & Knife Detector", page_icon="🥄", layout="wide")
-
+st.write("OpenCV version:", cv2.__version__)
+st.write("Has dnn:", hasattr(cv2, "dnn") and hasattr(cv2.dnn, "readNetFromDarknet"))
 
 # ----------------------------------------------------------------------
 # Model loading (downloaded once, cached)
 # ----------------------------------------------------------------------
 @st.cache_resource(show_spinner="Loading detection model (first run downloads ~25 MB)...")
-st.write("OpenCV version:", cv2.__version__)
-st.write("Has dnn:", hasattr(cv2, "dnn") and hasattr(cv2.dnn, "readNetFromDarknet"))
+
 def load_model():
     os.makedirs(MODEL_DIR, exist_ok=True)
     for fname, url in MODEL_FILES.items():
